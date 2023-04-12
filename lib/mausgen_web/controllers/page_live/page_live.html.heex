@@ -22,6 +22,12 @@
     <.live_component module={Items} id="items" character={@character} />
   <% end %>
   <%= if @current_step == 4 do %>
-    <.live_component module={Details} id="items" character={@character} />
+    <.live_component module={Details} id="details" character={@character} />
+  <% end %>
+  <%= if @current_step == 5 do %>
+    <.live_component module={PictureGenerator} id="picture" character={@character} generated_images={@generated_images}/>
+  <% end %>
+  <%= if @current_step == 6 do %>
+    <.live_component module={Sheet} id="picture" character={@character} generated_images={@generated_images}/>
   <% end %>
 </div>

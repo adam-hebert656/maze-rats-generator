@@ -11,7 +11,7 @@ defmodule MausgenWeb.Details do
         <div class="row-start-1 grid grid-cols-2 col-span-4">
           <div class="col-span-1">
             <%= if @character.appearance == nil do %>
-              <span class="font-extrabold">
+              <span class="font-extrabold text-lg">
                 Appearance:
               </span>
               <button
@@ -23,13 +23,13 @@ defmodule MausgenWeb.Details do
               </button>
             <% else %>
               <span class="font-extrabold">
-                Appearance: <%= @character.appearance %>
+                <span class="text-lg">Appearance:</span> <%= @character.appearance %>
               </span>
             <% end %>
           </div>
           <div class="col-span-1">
             <%= if @character.phys_detail == nil do %>
-              <span class="font-extrabold">
+              <span class="font-extrabold text-lg">
                 Physical Detail:
               </span>
               <button
@@ -41,7 +41,7 @@ defmodule MausgenWeb.Details do
               </button>
             <% else %>
               <span class="font-extrabold">
-                Physical Detail: <%= @character.phys_detail %>
+                <span class="text-lg">Physical Detail:</span> <%= @character.phys_detail %>
               </span>
             <% end %>
           </div>
@@ -49,7 +49,7 @@ defmodule MausgenWeb.Details do
         <div class="row-start-2 grid grid-cols-2 col-span-4">
           <div class="col-span-1">
             <%= if @character.background == nil do %>
-              <span class="font-extrabold">
+              <span class="font-extrabold text-lg">
                 Background:
               </span>
               <button
@@ -61,23 +61,36 @@ defmodule MausgenWeb.Details do
               </button>
             <% else %>
               <span class="font-extrabold">
-                Background: <%= @character.background %>
+                <span class="text-lg">Background:</span> <%= @character.background %>
               </span>
             <% end %>
           </div>
-          <div class="col-span-1">test</div>
-        </div>
-        <div class="row-start-3 grid grid-cols-2 col-span-4">
-          <div class="col-span-1">test</div>
-          <div class="col-span-1">test</div>
+          <div class="col-span-1">
+            <%= if @character.clothing == nil do %>
+              <span class="font-extrabold text-lg">
+                Clothing:
+              </span>
+              <button
+                phx-click="roll_detail"
+                value="clothing"
+                class="w-2/4 justify-self-center rounded-lg row-span-3 bg-cyan-500 hover:bg-cyan-600 border-2 border-black"
+              >
+                Roll
+              </button>
+            <% else %>
+              <span class="font-extrabold">
+                <span class="text-lg">Clothing:</span> <%= @character.clothing %>
+              </span>
+            <% end %>
+          </div>
         </div>
       </div>
-      <%= if @character.str != nil && @character.dex != nil && @character.will != nil do %>
+      <%= if @character.appearance != nil && @character.phys_detail != nil && @character.background != nil && @character.clothing != nil do %>
         <button
           phx-click="next_step"
           class="w-2/4 justify-self-center rounded-lg col-span-3 py-5 bg-cyan-500 hover:bg-cyan-600 border-2 border-black"
         >
-          Next: Generate a Picture & Backstory
+          Next: Generate a Picture
         </button>
       <% end %>
     </div>

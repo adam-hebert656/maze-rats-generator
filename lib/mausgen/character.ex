@@ -5,6 +5,7 @@ defmodule Mausgen.Character do
   schema "characters" do
     field(:name, :string)
     field(:feature, :string)
+    field(:image, :string)
 
     field(:hp, :integer)
     field(:str, :integer)
@@ -15,8 +16,6 @@ defmodule Mausgen.Character do
     field(:phys_detail, :string)
     field(:background, :string)
     field(:clothing, :string)
-    field(:personality, :string)
-    field(:mannerism, :string)
 
     field(:items, {:array, :string})
     field(:spells, {:array, :string})
