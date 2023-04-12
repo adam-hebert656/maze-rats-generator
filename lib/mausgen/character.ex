@@ -4,20 +4,27 @@ defmodule Mausgen.Character do
 
   schema "characters" do
     field(:name, :string)
-    field(:ancestry, :string)
+    field(:feature, :string)
 
     field(:hp, :integer)
     field(:str, :integer)
     field(:dex, :integer)
-    field(:con, :integer)
-    field(:int, :integer)
-    field(:psy, :integer)
-    field(:ego, :integer)
+    field(:will, :integer)
+
+    field(:appearance, :string)
+    field(:phys_detail, :string)
+    field(:background, :string)
+    field(:clothing, :string)
+    field(:personality, :string)
+    field(:mannerism, :string)
+
+    field(:items, {:array, :string})
+    field(:spells, {:array, :string})
   end
 
   def changeset(character, attrs) do
     character
-    |> cast(attrs, [:name, :ancestry, :hp, :str, :dex, :con, :int, :psy, :ego])
-    |> validate_required([:name, :ancestry, :hp, :str, :dex, :con, :int, :psy, :ego])
+    |> cast(attrs, [:name, :hp, :str, :dex, :will])
+    |> validate_required([:name, :hp, :str, :dex, :will])
   end
 end

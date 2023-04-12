@@ -1,6 +1,27 @@
 <div class="container mx-auto px-10 h-screen py-10 bg-sky-600 grid grid-rows-6">
   <div class="container rounded-lg mx-auto flex justify-center">
-    <h1 class="font-mono text-5xl">Generate your Vaarn wanderer...</h1>
+    <h1 class="font-mono text-5xl">Maze Rats Character Generator</h1>
   </div>
-  <.live_component module={AbilityScores} id="ability_scores" character={@character} />
+  <%= if @current_step == 0 do %>
+    <div class="container grid rounded-lg mx-auto">
+      <button
+        phx-click="next_step"
+        class="w-2/4 justify-self-center rounded-lg row-span-1 bg-cyan-500 hover:bg-cyan-600 border-2 border-black"
+      >
+        Generate a Maze Rat
+      </button>
+    </div>
+  <% end %>
+  <%= if @current_step == 1 do %>
+    <.live_component module={AbilityScores} id="ability_scores" character={@character} />
+  <% end %>
+  <%= if @current_step == 2 do %>
+    <.live_component module={Features} id="features" character={@character} />
+  <% end %>
+  <%= if @current_step == 3 do %>
+    <.live_component module={Items} id="items" character={@character} />
+  <% end %>
+  <%= if @current_step == 4 do %>
+    <.live_component module={Details} id="items" character={@character} />
+  <% end %>
 </div>
